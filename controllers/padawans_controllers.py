@@ -99,8 +99,6 @@ def promote_padawan_to_knight(padawan_id, auth_info):
     if not user_query:
         return jsonify({"message": "user linked to padawan not found"}), 400
 
-    user_query.force_rank = "Knight"
-    padawan_query.graduation_date = datetime.utcnow()
     
     updated_user = Users.new_user_obj()
     populate_obj(updated_user, post_data.force_rank)
