@@ -19,10 +19,10 @@ class Users(db.Model):
 
    
     auth = db.relationship("AuthTokens",back_populates="user")
-    masters =db.relationship("Masters", foreign_key='[Masters.user_id]', back_populate='user', cascade='all')
-    padawans =db.relationship("Padawans", foreign_key='[Padawans.user_id]', back_populate='user', cascade='all')
-    lightsabers =db.relationship("lightsabers", foreign_key='[lightsabers.owner_id]', back_populate='user', cascade='all')
-    temple= db.relationship("Temples", foreign_keys='[Users.temple_id]', back_populate='users')
+    masters =db.relationship("Masters", foreign_keys='[Masters.user_id]', back_populates='user', cascade='all')
+    padawans =db.relationship("Padawans", foreign_keys='[Padawans.user_id]', back_populates='user', cascade='all')
+    lightsabers =db.relationship("lightsabers", foreign_keys='[lightsabers.owner_id]', back_populates='user', cascade='all')
+    temple= db.relationship("Temples", foreign_keys='[Users.temple_id]', back_populates='users')
 
     def __init__(self, temple_id, username, email, password, force_rank, midi_count, join_date, is_active=True):
         self.temple_id = temple_id

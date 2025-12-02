@@ -20,7 +20,7 @@ class AuthTokens(db.Model):
     
 class AuthTokensSchema(ma.Schema):
     class Meta:
-        fields = ['auth_token', 'expiration','user']
+        fields = ['auth_token', 'expiration_date','user']
 
     auth_token = ma.fields.UUID()
     expiration_date = ma.fields.DateTime(required=True)

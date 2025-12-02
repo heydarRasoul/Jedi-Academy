@@ -10,10 +10,10 @@ class Species(db.Model):
     species_id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     species_name = db.Column(db.String(), nullable=False, unique=True)
     homeworld = db.Column(db.String())
-    forse_sensitive = db.Collumn(db.Boolean())
+    forse_sensitive = db.Column(db.Boolean())
     avg_lifespan = db.Column(db.Integer())
 
-    padawans = db.relationship("Padawans", foreign_key='[Padawans.species_id]', back_populate='specie', cascade='all')
+    padawans = db.relationship("Padawans", foreign_keys='[Padawans.species_id]', back_populates='specie', cascade='all')
 
     
     def __init__(self, species_name, homeworld, forse_sensitive, avg_lifespan):

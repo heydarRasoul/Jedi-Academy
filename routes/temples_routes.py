@@ -19,6 +19,6 @@ def update_temple_by_id_route(temple_id):
 
 
 
-# @temples.route('/temple/delete/<temple_id>', methods=['DELETE'])
-# def delete_temple_by_id_route(temple_id):
-#     return controllers.delete_temple_by_id(temple_id)
+@temples.route('/temple/delete/<temple_id>', methods=['DELETE'])
+def deactive_temple_by_id_route(temple_id):
+    return controllers.deactive_temple_by_id(temple_id)

@@ -4,7 +4,7 @@ import os
 
 from db import *
 
-from util.blueprints import register_blueprint
+from util.blueprints import register_blueprints
 
 
 flask_host = os.environ.get("FLASK_HOST")
@@ -18,7 +18,7 @@ database_name = os.environ.get("DATABASE_NAME")
 
 app = Flask(__name__)
 
-register_blueprint(app)
+register_blueprints(app)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = f"{database_scheme}{database_user}@{database_address}:{database_port}/{database_name}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

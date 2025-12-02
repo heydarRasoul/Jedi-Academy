@@ -14,9 +14,9 @@ class Temples(db.Model):
     planet = db.Column(db.String())
     master_count = db.Column(db.Integer())
     power_limit = db.Column(db.Integer())
-    is_active = db.Column(db.Boolean(default=True))
+    is_active = db.Column(db.Boolean(), default=True)
 
-    users = db.relstionship("Users", foriegn_keys='[Users.temple_id]', back_populate='temple', cascade='all')
+    users = db.relationship("Users", foreign_keys='[Users.temple_id]', back_populates='temple', cascade='all')
    
 
     def __init__ (self, temple_name, planet, master_count, power_limit, is_active=True):
@@ -35,7 +35,7 @@ class TemplesSchema(ma.Schema):
     class Meta:
         fields = ['temple_id','temple_name', 'planet', 'master_count', 'power_limit', 'is_active', 'users']
 
-    user_id = ma.fields.UUID()
+    temple_id = ma.fields.UUID()
     temple_name = ma.fields.String(required=True)
     planet= ma.fields.String(allow_none=True)
     master_count= ma.fields.Integer(allow_none=True)

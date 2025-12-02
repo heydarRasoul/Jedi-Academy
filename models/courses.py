@@ -7,14 +7,14 @@ from db import db
 class Courses(db.Model):
     __tablename__ = "Courses"
 
-    courses_id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    course_id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     instructor_id = db.Column(UUID(as_uuid=True), db.ForeignKey("Masters.master_id"), nullable=False)
     course_name = db.Column(db.String(), nullable=False, unique=True)
     difficulty = db.Column(db.String())
-    duration_weeks= db.Collumn(db.Integer())
+    duration_weeks= db.Column(db.Integer())
     max_students = db.Column(db.Integer())
 
-    master = db.relationship("Masters", foreign_key='[Courses.instructor_id]', back_populate='padawans')
+    master = db.relationship("Masters", foreign_keys='[Courses.instructor_id]', back_populates='padawans')
     padawanCourses = db.relationship("Courses", back_populates='courses', cascade='all')
     
     def __init__(self, instructor_id, course_name, difficulty, duration_weeks, max_students):
@@ -30,9 +30,9 @@ class Courses(db.Model):
 class CoursesSchema(ma.Schema):
 
     class Meta:
-        fields = ['courses_id','course_name', 'difficulty', 'duration_weeks', 'max_students', 'master']
+        fields = ['course_id','course_name', 'difficulty', 'duration_weeks', 'max_students', 'master']
 
-    courses_id = ma.fields.UUID()
+    course_id = ma.fields.UUID()
     course_name = ma.fields.String(required=True)
     difficulty = ma.fields.String(allow_none=True)
     duration_weeks= ma.fields.Boolean(allow_none=True)
