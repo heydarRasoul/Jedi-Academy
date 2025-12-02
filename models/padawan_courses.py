@@ -8,14 +8,15 @@ from db import db
 class PadawanCourses(db.Model):
     __tablename__ = "PadawanCourses"
 
-    padawan_id = db.Column(UUID(as_uuid=True), db.ForeignKey("Padawans.padawan_id"), primary_key=True, default=uuid.uuid4)
-    course_id = db.Column(UUID(as_uuid=True), db.ForeignKey("Courses.course_id"), primary_key=True, default=uuid.uuid4)
+    padawan_id = db.Column(UUID(as_uuid=True), db.ForeignKey("Padawans.padawan_id"), primary_key=True)
+    course_id = db.Column(UUID(as_uuid=True), db.ForeignKey("Courses.course_id"), primary_key=True)
     enrollment_date = db.Column(db.DateTime)
     completion_date = db.Column(db.DateTime)
     final_score = db.Column(db.Float)
 
-    padawans = db.relationship("Padawans", back_populates="padwanCourses")
-    courses = db.relationship("Courses", back_populates="padawanCourses")
+    padawan = db.relationship("Padawans", back_populates="padawanCourses")
+    course = db.relationship("Courses", back_populates="padawanCourses")
+
   
 
    

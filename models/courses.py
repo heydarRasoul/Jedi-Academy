@@ -14,8 +14,8 @@ class Courses(db.Model):
     duration_weeks= db.Column(db.Integer())
     max_students = db.Column(db.Integer())
 
-    master = db.relationship("Masters", foreign_keys='[Courses.instructor_id]', back_populates='padawans')
-    padawanCourses = db.relationship("Courses", back_populates='courses', cascade='all')
+    master = db.relationship("Masters", foreign_keys='[Courses.instructor_id]', back_populates='courses')
+    padawanCourses = db.relationship("PadawanCourses", back_populates='course', cascade='all')
     
     def __init__(self, instructor_id, course_name, difficulty, duration_weeks, max_students):
         self.instructor_id = instructor_id

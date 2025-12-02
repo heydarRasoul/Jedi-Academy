@@ -2,8 +2,8 @@ from flask import jsonify, request
 
 from db import db
 from models.padawan_courses import PadawanCourses, padawan_course_schema,padawan_courses_schema
-from models.padawans import Padawans, padawan_schema, padawans_schema
-from models.courses import Courses, courses_schema, course_schema
+from models.padawans import Padawans
+from models.courses import Courses
 from util.reflection import populate_obj
 from lib.authenticate import authenticate, authenticate_return_auth
 

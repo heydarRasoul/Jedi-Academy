@@ -17,7 +17,7 @@ class Lightsabers(db.Model):
     is_completed = db.Column(db.Boolean(), default=False)
 
 
-    user = db.relationship("Users", foreign_keys='[Users.user_id]', back_populates='lightsabers')
+    user = db.relationship("Users", foreign_keys='[Lightsabers.owner_id]', back_populates='lightsabers')
     crystal = db.relationship("Crystals", back_populates="lightsabers")
 
     def __init__(self, owner_id,crystal_id, saber_name, hilt_material, blade_color, is_completed=False):
@@ -28,7 +28,7 @@ class Lightsabers(db.Model):
         self.blade_color = blade_color
         self.is_completed = is_completed
 
-    def new_crystal_obj():
+    def new_lightsaber_obj():
         return Lightsabers('','','','','',False)
 
 

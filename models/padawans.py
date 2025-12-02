@@ -17,10 +17,10 @@ class Padawans(db.Model):
     training_level = db.Column(db.Integer())
     graduation_date = db.Column(db.DateTime)
 
-    user = db.relationship("Users", foreign_keys='[Padawans.padawan_id]', back_populates='padawans')
+    user = db.relationship("Users", foreign_keys='[Padawans.user_id]', back_populates='padawans')
     master = db.relationship("Masters", foreign_keys='[Padawans.master_id]', back_populates='padawans')
     specie = db.relationship("Species", foreign_keys='[Padawans.species_id]', back_populates='padawans')
-    padawanCourses = db.relationship("Padawans", back_populates='padawans', cascade='all')
+    padawanCourses = db.relationship("PadawanCourses", back_populates='padawan', cascade='all')
 
    
     def __init__(self, padawan_name, age, training_level, master_id, user_id, species_id, graduation_date):

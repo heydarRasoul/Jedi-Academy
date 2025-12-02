@@ -26,7 +26,7 @@ class Temples(db.Model):
         self.power_limit = power_limit
         self.is_active = is_active
 
-    def new_category_obj():
+    def new_temple_obj():
         return Temples('', '', 0, 0, True)
 
 

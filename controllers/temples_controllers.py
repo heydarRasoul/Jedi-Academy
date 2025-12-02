@@ -7,10 +7,28 @@ from models.padawans import Padawans, padawan_schema,padawans_schema
 from util.reflection import populate_obj
 from lib.authenticate import authenticate, authenticate_return_auth
 
-@authenticate_return_auth
-def create_temple(auth_info):
-    if auth_info.user.role !='grand-master':
-        return jsonify({"message":"access denied"}),403
+# @authenticate_return_auth
+# def create_temple(auth_info):
+#     if auth_info.user.role !='grand-master':
+#         return jsonify({"message":"access denied"}),403
+
+#     post_data = request.form if request.form else request.json
+
+#     new_temple = Temples.new_temple_obj()
+#     populate_obj(new_temple, post_data)
+
+#     try:
+#         db.session.add(new_temple)
+#         db.session.commit()
+#     except:
+#         db.session.rollback()
+#         return jsonify({"message":"unable to add record"}), 400
+
+#     return jsonify({"message":"temple added", "result": temple_schema.dump(new_temple)}), 201
+
+
+def create_temple():
+    
 
     post_data = request.form if request.form else request.json
 
